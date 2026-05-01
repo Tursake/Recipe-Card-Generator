@@ -23,7 +23,6 @@ input, textarea, select {
 }
 
 textarea { height:120px; }
-
 .row { display:flex; gap:10px; }
 
 .buttons button {
@@ -35,7 +34,7 @@ textarea { height:120px; }
   cursor:pointer;
 }
 
-/* PREVIEW AREA */
+/* PREVIEW */
 .preview {
   flex:1;
   background:#e6e6e6;
@@ -47,24 +46,27 @@ textarea { height:120px; }
 /* CARD */
 .card {
   background:white;
-  padding:50px;
   box-shadow:0 10px 30px rgba(0,0,0,.2);
   overflow:hidden;
+}
+
+/* INNER CONTENT PADDING */
+.content {
+  padding:50px;
 }
 
 .card h1 { margin:0; font-size:34px; }
 .card h2 { margin-top:30px; font-size:20px; }
 
-/* A4 / A5 sizes */
+/* A4 / A5 */
 .a4 { width:794px; height:1123px; }
 .a5 { width:559px; height:794px; }
 
-/* IMAGE PLACEHOLDER */
+/* FULL BLEED IMAGE */
 .imageWrapper {
   width:100%;
-  height:240px;
+  height:300px;
   background:#f1f1f1;
-  margin-bottom:20px;
   position:relative;
   display:flex;
   justify-content:center;
@@ -86,7 +88,23 @@ textarea { height:120px; }
   display:none;
 }
 
-/* PRINT MODE */
+/* DIVIDER */
+.divider {
+  border:none;
+  border-top:1px solid #ddd;
+  margin:25px 0;
+}
+
+/* TWO COLUMNS */
+.columns {
+  display:flex;
+  gap:40px;
+}
+
+.ingredientsCol { flex:0 0 30%; }
+.instructionsCol { flex:1; }
+
+/* PRINT */
 @media print {
   body * { visibility:hidden; }
   #card, #card * { visibility:visible; }
