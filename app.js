@@ -5,7 +5,6 @@ const placeholder = document.getElementById("imagePlaceholder");
 
 inputs.forEach(i => i.addEventListener("input", update));
 
-/* IMAGE UPLOAD */
 fileInput.addEventListener("change", function () {
   const file = this.files[0];
   if (!file) return;
@@ -19,7 +18,6 @@ fileInput.addEventListener("change", function () {
   reader.readAsDataURL(file);
 });
 
-/* PARSE SUB-HEADINGS (##) */
 function parseSections(text) {
   const lines = text.split("\n");
   let html = "";
@@ -39,10 +37,9 @@ function parseSections(text) {
   return html;
 }
 
-/* LIVE UPDATE */
 function update() {
   pTitle.innerText = title.value;
-  pMeta.innerText = `${servings.value} servings • ${time.value}`;
+  pMeta.innerText = `Servings: ${servings.value}   Time: ${time.value}`;
 
   pIngredients.innerHTML = parseSections(ingredients.value);
   pInstructions.innerHTML = parseSections(instructions.value);
@@ -51,7 +48,6 @@ function update() {
   card.className = "card " + size.value;
 }
 
-/* CLEAR EVERYTHING */
 function clearAll() {
   document.querySelectorAll("input, textarea").forEach(el => el.value = "");
   fileInput.value = "";
