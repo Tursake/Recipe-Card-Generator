@@ -143,6 +143,9 @@ textarea {
   height:300px;
   min-height:120px;
   background:#f1f1f1;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   position:relative;
   display:flex;
   justify-content:center;
@@ -155,14 +158,6 @@ textarea {
 #imagePlaceholder {
   color:#888;
   font-size:16px;
-}
-
-.imageWrapper img {
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:none;
 }
 
 .content {
@@ -245,36 +240,4 @@ li {
 #pNotes {
   font-size:14px;
   color:#444;
-}
-
-@page {
-  size:A4 portrait;
-  margin:0;
-}
-
-@media print {
-  html, body {
-    margin:0;
-    padding:0;
-  }
-
-  body * {
-    visibility:hidden;
-  }
-
-  #card, #card * {
-    visibility:visible;
-  }
-
-  #card {
-    position:absolute;
-    left:0;
-    top:0;
-    box-shadow:none;
-  }
-
-  .editIcon,
-  .editor {
-    display:none;
-  }
 }
