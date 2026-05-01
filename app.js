@@ -1,6 +1,7 @@
 const inputs = document.querySelectorAll("input, textarea, select");
 const fileInput = document.getElementById("imageUpload");
 const previewImage = document.getElementById("pImage");
+const placeholder = document.getElementById("imagePlaceholder");
 
 inputs.forEach(i => i.addEventListener("input", update));
 
@@ -13,11 +14,12 @@ fileInput.addEventListener("change", function () {
   reader.onload = function (e) {
     previewImage.src = e.target.result;
     previewImage.style.display = "block";
+    placeholder.style.display = "none";
   };
   reader.readAsDataURL(file);
 });
 
-/* PARSE SUB-HEADINGS */
+/* PARSE SUB-HEADINGS (##) */
 function parseSections(text) {
   const lines = text.split("\n");
   let html = "";
@@ -51,16 +53,11 @@ function update() {
 
 /* CLEAR EVERYTHING */
 function clearAll() {
-  // clear text inputs
   document.querySelectorAll("input, textarea").forEach(el => el.value = "");
-
-  // clear file input properly
   fileInput.value = "";
-
-  // remove preview image
   previewImage.src = "";
   previewImage.style.display = "none";
-
+  placeholder.style.display = "block";
   update();
 }
 
