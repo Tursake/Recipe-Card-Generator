@@ -13,6 +13,10 @@ body {
   overflow:auto;
 }
 
+.editor h1 {
+  margin-top:0;
+}
+
 label {
   font-size:12px;
   color:#666;
@@ -43,6 +47,37 @@ textarea { height:120px; }
   cursor:pointer;
 }
 
+/* Editable editor labels */
+.editableLabel {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.editableLabel label {
+  margin:0;
+}
+
+.editIcon {
+  opacity:0;
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:14px;
+  color:#777;
+  padding:0 4px;
+}
+
+.editableLabel:hover .editIcon {
+  opacity:1;
+}
+
+.editIcon:hover {
+  color:#111;
+}
+
+/* Preview */
 .preview {
   flex:1;
   background:#e6e6e6;
@@ -165,12 +200,19 @@ li {
 
 @media print {
   body * { visibility:hidden; }
-  #card, #card * { visibility:visible; }
+
+  #card, #card * {
+    visibility:visible;
+  }
 
   #card {
     position:absolute;
     left:0;
     top:0;
     box-shadow:none;
+  }
+
+  .editIcon {
+    display:none;
   }
 }
