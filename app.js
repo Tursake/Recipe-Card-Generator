@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const $ = id => document.getElementById(id);
 
   const required = [
-    "imageUpload", "pImage", "imagePlaceholder", "card",
+    "imageUpload", "imageWrapper", "imagePlaceholder", "card",
     "title", "servings", "time", "ingredients", "instructions", "notes",
     "servingsLabel", "timeLabel", "ingredientsLabel", "instructionsLabel", "notesLabel",
     "pTitle", "pServingsLabel", "pTimeLabel", "pIngredientsLabel", "pInstructionsLabel", "pNotesLabel",
@@ -19,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const fileInput = $("imageUpload");
-  const previewImage = $("pImage");
+  const imageWrapper = $("imageWrapper");
   const placeholder = $("imagePlaceholder");
-  const imageWrapper = document.querySelector(".imageWrapper");
   const card = $("card");
 
   const titleInput = $("title");
@@ -42,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
 
     reader.onload = function (event) {
-      previewImage.src = event.target.result;
-      previewImage.style.display = "block";
+      imageWrapper.style.backgroundImage = `url("${event.target.result}")`;
       placeholder.style.display = "none";
       fitCardToPage();
     };
@@ -150,8 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("notesLabel").innerText = "Notes";
 
     fileInput.value = "";
-    previewImage.src = "";
-    previewImage.style.display = "none";
+    imageWrapper.style.backgroundImage = "";
     placeholder.style.display = "block";
 
     update();
@@ -171,8 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
     await document.fonts.ready;
     fitCardToPage();
 
+    await new Promise(resolve => requestAnimationFrame(resolve));
+
     const canvas = await html2canvas(card, {
       scale: 2,
+      width: card.offsetWidth,
+      height: card.offsetHeight,
       backgroundColor: "#ffffff",
       useCORS: true
     });
