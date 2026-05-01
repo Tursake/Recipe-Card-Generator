@@ -1,6 +1,7 @@
 body {
   margin:0;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  color:#222;
 }
 
 .layout { display:flex; height:100vh; }
@@ -13,13 +14,19 @@ body {
   overflow:auto;
 }
 
-label { font-size:13px; color:#555; }
+label {
+  font-size:12px;
+  color:#666;
+  letter-spacing:.5px;
+}
 
 input, textarea, select {
   width:100%;
   margin:8px 0 18px;
-  padding:8px;
+  padding:10px;
   border:1px solid #ccc;
+  font-family:inherit;
+  font-size:14px;
 }
 
 textarea { height:120px; }
@@ -46,23 +53,63 @@ textarea { height:120px; }
 /* CARD */
 .card {
   background:white;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
 }
 
-/* INNER CONTENT PADDING */
+/* CONTENT */
 .content {
   padding:50px;
+  display:flex;
+  flex-direction:column;
+  height:100%;
 }
 
-.card h1 { margin:0; font-size:34px; }
-.card h2 { margin-top:30px; font-size:20px; }
+/* TYPOGRAPHY */
+.card h1 {
+  margin:0;
+  font-size:36px;
+  font-weight:600;
+}
+
+.card h2 {
+  margin-top:0;
+  font-size:18px;
+  font-weight:600;
+}
+
+.card h3 {
+  margin:15px 0 5px;
+  font-size:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:#444;
+}
+
+ul {
+  padding-left:18px;
+  margin:5px 0 15px;
+}
+
+li {
+  margin-bottom:4px;
+  font-size:14px;
+}
+
+#pMeta {
+  margin-top:10px;
+  font-size:14px;
+  color:#555;
+}
 
 /* A4 / A5 */
 .a4 { width:794px; height:1123px; }
 .a5 { width:559px; height:794px; }
 
-/* FULL BLEED IMAGE */
+/* IMAGE */
 .imageWrapper {
   width:100%;
   height:300px;
@@ -76,8 +123,7 @@ textarea { height:120px; }
 
 #imagePlaceholder {
   color:#888;
-  font-size:18px;
-  letter-spacing:1px;
+  font-size:16px;
 }
 
 .imageWrapper img {
@@ -91,11 +137,15 @@ textarea { height:120px; }
 /* DIVIDER */
 .divider {
   border:none;
-  border-top:1px solid #ddd;
+  border-top:1px solid #e5e5e5;
   margin:25px 0;
 }
 
-/* TWO COLUMNS */
+/* MAIN CONTENT AREA */
+.main {
+  flex:1;
+}
+
 .columns {
   display:flex;
   gap:40px;
@@ -103,6 +153,18 @@ textarea { height:120px; }
 
 .ingredientsCol { flex:0 0 30%; }
 .instructionsCol { flex:1; }
+
+/* NOTES SECTION (BOTTOM) */
+.notesSection {
+  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid #eee;
+}
+
+#pNotes {
+  font-size:14px;
+  color:#444;
+}
 
 /* PRINT */
 @media print {
