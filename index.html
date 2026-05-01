@@ -1,10 +1,12 @@
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Recipe Card Generator</title>
 
 <link rel="stylesheet" href="style.css">
 
-<!-- Font -->
+<!-- Modern clean font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -12,6 +14,7 @@
 
 <div class="layout">
 
+  <!-- LEFT: EDITOR -->
   <div class="editor">
     <h1>Recipe Card</h1>
 
@@ -53,35 +56,48 @@
     </div>
   </div>
 
+  <!-- RIGHT: PREVIEW -->
   <div class="preview">
     <div id="card" class="card a4">
 
-      <!-- FULL BLEED IMAGE -->
+      <!-- IMAGE -->
       <div class="imageWrapper">
         <span id="imagePlaceholder">Add photo</span>
         <img id="pImage">
       </div>
 
+      <!-- CONTENT -->
       <div class="content">
+
+        <!-- TITLE + META -->
         <h1 id="pTitle"></h1>
         <div id="pMeta"></div>
 
         <hr class="divider">
 
-        <div class="columns">
-          <div class="ingredientsCol">
-            <h2>Ingredients</h2>
-            <div id="pIngredients"></div>
-          </div>
+        <!-- MAIN TWO-COLUMN AREA -->
+        <div class="main">
+          <div class="columns">
 
-          <div class="instructionsCol">
-            <h2>Instructions</h2>
-            <div id="pInstructions"></div>
+            <div class="ingredientsCol">
+              <h2>Ingredients</h2>
+              <div id="pIngredients"></div>
+            </div>
+
+            <div class="instructionsCol">
+              <h2>Instructions</h2>
+              <div id="pInstructions"></div>
+            </div>
+
           </div>
         </div>
 
-        <h2>Notes</h2>
-        <div id="pNotes"></div>
+        <!-- NOTES (BOTTOM SECTION) -->
+        <div class="notesSection">
+          <h2>Notes</h2>
+          <div id="pNotes"></div>
+        </div>
+
       </div>
 
     </div>
@@ -90,5 +106,6 @@
 </div>
 
 <script src="app.js"></script>
+
 </body>
 </html>
