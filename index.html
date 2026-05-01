@@ -28,11 +28,11 @@
     <div class="row">
       <div>
         <label>Servings</label>
-        <input id="servings">
+        <input id="servings" placeholder="10">
       </div>
       <div>
         <label>Time</label>
-        <input id="time">
+        <input id="time" placeholder="30 minutes">
       </div>
     </div>
 
@@ -54,22 +54,33 @@
   <div class="preview">
     <div id="card" class="card a4">
 
+      <!-- FULL BLEED IMAGE -->
       <div class="imageWrapper">
         <span id="imagePlaceholder">Add photo</span>
         <img id="pImage">
       </div>
 
-      <h1 id="pTitle"></h1>
-      <div id="pMeta"></div>
+      <div class="content">
+        <h1 id="pTitle"></h1>
+        <div id="pMeta"></div>
 
-      <h2>Ingredients</h2>
-      <div id="pIngredients"></div>
+        <hr class="divider">
 
-      <h2>Instructions</h2>
-      <div id="pInstructions"></div>
+        <div class="columns">
+          <div class="ingredientsCol">
+            <h2>Ingredients</h2>
+            <div id="pIngredients"></div>
+          </div>
 
-      <h2>Notes</h2>
-      <div id="pNotes"></div>
+          <div class="instructionsCol">
+            <h2>Instructions</h2>
+            <div id="pInstructions"></div>
+          </div>
+        </div>
+
+        <h2>Notes</h2>
+        <div id="pNotes"></div>
+      </div>
 
     </div>
   </div>
