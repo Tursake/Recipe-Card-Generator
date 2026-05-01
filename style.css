@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.editor {
+  width: 40%;
+  padding: 20px;
+  background: #f3f3f3;
+  overflow: auto;
+}
+
+.preview {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ddd;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(0,0,0,.2);
+}
+
+.a4 { width: 794px; height: 1123px; }
+.a5 { width: 559px; height: 794px; }
+
+textarea { height: 120px; }
+input, textarea, select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+}
