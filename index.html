@@ -12,8 +12,9 @@
 
 <div class="layout">
 
+  <!-- EDITOR -->
   <div class="editor">
-    <h1>Recipe Card</h1>
+    <h1>Recipe Card Generator</h1>
 
     <label>Card size</label>
     <select id="size">
@@ -38,6 +39,22 @@
       </div>
     </div>
 
+    <!-- LABEL EDITING -->
+    <label>Servings label</label>
+    <input id="servingsLabelInput" value="Servings">
+
+    <label>Time label</label>
+    <input id="timeLabelInput" value="Time">
+
+    <label>Ingredients label</label>
+    <input id="ingredientsLabelInput" value="Ingredients">
+
+    <label>Instructions label</label>
+    <input id="instructionsLabelInput" value="Instructions">
+
+    <label>Notes label</label>
+    <input id="notesLabelInput" value="Notes">
+
     <label>Ingredients (use ## for sub-headings)</label>
     <textarea id="ingredients"></textarea>
 
@@ -53,6 +70,7 @@
     </div>
   </div>
 
+  <!-- PREVIEW -->
   <div class="preview">
     <div id="card" class="card a4">
 
@@ -66,15 +84,8 @@
         <h1 id="pTitle"></h1>
 
         <div class="metaRow">
-          <span>
-            <span id="servingsLabel">Servings</span>: <span id="pServings"></span>
-            <button class="editIcon" onclick="editLabel('servingsLabel')" title="Edit">✎</button>
-          </span>
-
-          <span>
-            <span id="timeLabel">Time</span>: <span id="pTime"></span>
-            <button class="editIcon" onclick="editLabel('timeLabel')" title="Edit">✎</button>
-          </span>
+          <span><span id="servingsLabel"></span>: <span id="pServings"></span></span>
+          <span><span id="timeLabel"></span>: <span id="pTime"></span></span>
         </div>
 
         <hr class="divider">
@@ -83,18 +94,12 @@
           <div class="columns">
 
             <div class="ingredientsCol">
-              <div class="editableLabel">
-                <h2 id="ingredientsLabel">Ingredients</h2>
-                <button class="editIcon" onclick="editLabel('ingredientsLabel')" title="Edit">✎</button>
-              </div>
+              <h2 id="ingredientsLabel"></h2>
               <div id="pIngredients"></div>
             </div>
 
             <div class="instructionsCol">
-              <div class="editableLabel">
-                <h2 id="instructionsLabel">Instructions</h2>
-                <button class="editIcon" onclick="editLabel('instructionsLabel')" title="Edit">✎</button>
-              </div>
+              <h2 id="instructionsLabel"></h2>
               <div id="pInstructions"></div>
             </div>
 
@@ -102,10 +107,7 @@
         </div>
 
         <div class="notesSection">
-          <div class="editableLabel">
-            <h2 id="notesLabel">Notes</h2>
-            <button class="editIcon" onclick="editLabel('notesLabel')" title="Edit">✎</button>
-          </div>
+          <h2 id="notesLabel"></h2>
           <div id="pNotes"></div>
         </div>
 
