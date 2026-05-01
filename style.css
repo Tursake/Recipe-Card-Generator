@@ -1,12 +1,11 @@
 body {
   margin:0;
-  font-family: 'Inter', sans-serif;
+  font-family:'Inter', sans-serif;
   color:#222;
 }
 
 .layout { display:flex; height:100vh; }
 
-/* LEFT PANEL */
 .editor {
   width:380px;
   padding:30px;
@@ -41,7 +40,6 @@ textarea { height:120px; }
   cursor:pointer;
 }
 
-/* PREVIEW */
 .preview {
   flex:1;
   background:#e6e6e6;
@@ -50,7 +48,6 @@ textarea { height:120px; }
   align-items:center;
 }
 
-/* CARD */
 .card {
   background:white;
   box-shadow:0 10px 30px rgba(0,0,0,.15);
@@ -59,66 +56,21 @@ textarea { height:120px; }
   flex-direction:column;
 }
 
-/* CONTENT */
-.content {
-  padding:50px;
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-
-/* TYPOGRAPHY */
-.card h1 {
-  margin:0;
-  font-size:36px;
-  font-weight:600;
-}
-
-.card h2 {
-  margin-top:0;
-  font-size:18px;
-  font-weight:600;
-}
-
-.card h3 {
-  margin:15px 0 5px;
-  font-size:14px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-  color:#444;
-}
-
-ul {
-  padding-left:18px;
-  margin:5px 0 15px;
-}
-
-li {
-  margin-bottom:4px;
-  font-size:14px;
-}
-
-#pMeta {
-  margin-top:10px;
-  font-size:14px;
-  color:#555;
-}
-
-/* A4 / A5 */
 .a4 { width:794px; height:1123px; }
 .a5 { width:559px; height:794px; }
 
-/* IMAGE */
 .imageWrapper {
   width:100%;
   height:300px;
+  min-height:120px;
   background:#f1f1f1;
   position:relative;
   display:flex;
   justify-content:center;
   align-items:center;
   overflow:hidden;
+  flex-shrink:0;
+  transition:height .15s ease;
 }
 
 #imagePlaceholder {
@@ -134,14 +86,47 @@ li {
   display:none;
 }
 
-/* DIVIDER */
+.content {
+  padding:50px;
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.card h1 {
+  margin:0;
+  font-size:36px;
+  font-weight:600;
+}
+
+.card h2 {
+  margin:0 0 12px;
+  font-size:18px;
+  font-weight:600;
+}
+
+.card h3 {
+  margin:15px 0 5px;
+  font-size:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:#444;
+}
+
+#pMeta {
+  margin-top:10px;
+  font-size:14px;
+  color:#555;
+}
+
 .divider {
   border:none;
   border-top:1px solid #e5e5e5;
   margin:25px 0;
 }
 
-/* MAIN CONTENT AREA */
 .main {
   flex:1;
 }
@@ -154,7 +139,16 @@ li {
 .ingredientsCol { flex:0 0 30%; }
 .instructionsCol { flex:1; }
 
-/* NOTES SECTION (BOTTOM) */
+ul {
+  padding-left:18px;
+  margin:5px 0 15px;
+}
+
+li {
+  margin-bottom:4px;
+  font-size:14px;
+}
+
 .notesSection {
   margin-top:auto;
   padding-top:20px;
@@ -166,7 +160,6 @@ li {
   color:#444;
 }
 
-/* PRINT */
 @media print {
   body * { visibility:hidden; }
   #card, #card * { visibility:visible; }
