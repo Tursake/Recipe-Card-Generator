@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "title", "servings", "time", "ingredients", "instructions", "notes",
     "servingsLabel", "timeLabel", "ingredientsLabel", "instructionsLabel", "notesLabel",
     "pTitle", "pServingsLabel", "pTimeLabel", "pIngredientsLabel", "pInstructionsLabel", "pNotesLabel",
-    "pServings", "pTime", "pIngredients", "pInstructions", "pNotes"
+    "pServings", "pTime", "pIngredients", "pInstructions", "pNotes",
+    "pdfFiles"
   ];
 
   const missing = required.filter(id => !$(id));
@@ -156,6 +157,41 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   };
 
+  window.downloadPDF = async function () {
+    if (!window.html2canvas || !window.jspdf) {
+      alert("PDF export libraries did not load. Check your internet connection.");
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    const originalBoxShadow = card.style.boxShadow;
+    card.style.boxShadow = "none";
+
+    await document.fonts.ready;
+    fitCardToPage();
+
+    const canvas = await html2canvas(card, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      useCORS: true
+    });
+
+    card.style.boxShadow = originalBoxShadow;
+
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: "a4",
+      compress: true
+    });
+
+    pdf.addImage(imgData, "PNG", 0, 0, 595.28, 841.89);
+    pdf.save("recipe-card.pdf");
+  };
+
   window.mergePdfsTwoPerPage = async function () {
     const input = $("pdfFiles");
     const files = Array.from(input.files);
@@ -166,17 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!window.PDFLib) {
-      alert("PDF library did not load.");
+      alert("PDF library did not load. Check your internet connection or host pdf-lib locally.");
       return;
     }
 
     const { PDFDocument } = PDFLib;
     const outputPdf = await PDFDocument.create();
 
-    const pageWidth = 841.89;
-    const pageHeight = 595.28;
-    const slotWidth = pageWidth / 2;
-    const slotHeight = pageHeight;
+    const a4LandscapeWidth = 841.89;
+    const a4LandscapeHeight = 595.28;
+    const slotWidth = a4LandscapeWidth / 2;
+    const slotHeight = a4LandscapeHeight;
 
     const pagesToPlace = [];
 
@@ -189,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     for (let i = 0; i < pagesToPlace.length; i += 2) {
-      const page = outputPdf.addPage([pageWidth, pageHeight]);
+      const page = outputPdf.addPage([a4LandscapeWidth, a4LandscapeHeight]);
 
       drawEmbeddedPage(page, pagesToPlace[i], 0, 0, slotWidth, slotHeight);
 
@@ -205,7 +241,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const link = document.createElement("a");
     link.href = url;
     link.download = "recipes-two-per-a4.pdf";
+    document.body.appendChild(link);
     link.click();
+    link.remove();
 
     URL.revokeObjectURL(url);
   };
@@ -219,9 +257,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const width = embeddedPage.width * scale;
     const height = embeddedPage.height * scale;
 
+    const offsetX = x + (slotWidth - width) / 2;
+    const offsetY = y + (slotHeight - height) / 2;
+
     page.drawPage(embeddedPage, {
-      x: x + (slotWidth - width) / 2,
-      y: y + (slotHeight - height) / 2,
+      x: offsetX,
+      y: offsetY,
       width,
       height
     });
