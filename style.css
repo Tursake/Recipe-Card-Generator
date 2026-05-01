@@ -5,6 +5,7 @@ body {
 
 .layout { display:flex; height:100vh; }
 
+/* LEFT PANEL */
 .editor {
   width:380px;
   padding:30px;
@@ -12,15 +13,8 @@ body {
   overflow:auto;
 }
 
-.preview {
-  flex:1;
-  background:#e6e6e6;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
 label { font-size:13px; color:#555; }
+
 input, textarea, select {
   width:100%;
   margin:8px 0 18px;
@@ -41,6 +35,16 @@ textarea { height:120px; }
   cursor:pointer;
 }
 
+/* PREVIEW AREA */
+.preview {
+  flex:1;
+  background:#e6e6e6;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
 .card {
   background:white;
   padding:50px;
@@ -48,23 +52,45 @@ textarea { height:120px; }
   overflow:hidden;
 }
 
-.card img {
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  margin-bottom:20px;
-}
-
 .card h1 { margin:0; font-size:34px; }
 .card h2 { margin-top:30px; font-size:20px; }
 
+/* A4 / A5 sizes */
 .a4 { width:794px; height:1123px; }
 .a5 { width:559px; height:794px; }
 
-/* PRINT MAGIC */
+/* IMAGE PLACEHOLDER */
+.imageWrapper {
+  width:100%;
+  height:240px;
+  background:#f1f1f1;
+  margin-bottom:20px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+#imagePlaceholder {
+  color:#888;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+.imageWrapper img {
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+
+/* PRINT MODE */
 @media print {
   body * { visibility:hidden; }
   #card, #card * { visibility:visible; }
+
   #card {
     position:absolute;
     left:0;
