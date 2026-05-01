@@ -12,7 +12,6 @@
 
 <div class="layout">
 
-  <!-- EDITOR -->
   <div class="editor">
     <h1>Recipe Card Generator</h1>
 
@@ -48,19 +47,19 @@
 
     <div class="editableLabel">
       <label id="ingredientsLabel">Ingredients</label>
-      <button class="editIcon" onclick="editLabel('ingredientsLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('ingredientsLabel')" title="Edit">✎</button>
     </div>
     <textarea id="ingredients"></textarea>
 
     <div class="editableLabel">
       <label id="instructionsLabel">Instructions</label>
-      <button class="editIcon" onclick="editLabel('instructionsLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('instructionsLabel')" title="Edit">✎</button>
     </div>
     <textarea id="instructions"></textarea>
 
     <div class="editableLabel">
       <label id="notesLabel">Notes</label>
-      <button class="editIcon" onclick="editLabel('notesLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('notesLabel')" title="Edit">✎</button>
     </div>
     <textarea id="notes"></textarea>
 
@@ -70,7 +69,6 @@
     </div>
   </div>
 
-  <!-- PREVIEW -->
   <div class="preview">
     <div id="card" class="card a4">
 
@@ -84,8 +82,8 @@
         <h1 id="pTitle"></h1>
 
         <div class="metaRow">
-          <span><span id="pServingsLabel"></span>: <span id="pServings"></span></span>
-          <span><span id="pTimeLabel"></span>: <span id="pTime"></span></span>
+          <span><span id="pServingsLabel">Servings</span>: <span id="pServings"></span></span>
+          <span><span id="pTimeLabel">Time</span>: <span id="pTime"></span></span>
         </div>
 
         <hr class="divider">
@@ -94,12 +92,12 @@
           <div class="columns">
 
             <div class="ingredientsCol">
-              <h2 id="pIngredientsLabel"></h2>
+              <h2 id="pIngredientsLabel">Ingredients</h2>
               <div id="pIngredients"></div>
             </div>
 
             <div class="instructionsCol">
-              <h2 id="pInstructionsLabel"></h2>
+              <h2 id="pInstructionsLabel">Instructions</h2>
               <div id="pInstructions"></div>
             </div>
 
@@ -107,7 +105,7 @@
         </div>
 
         <div class="notesSection">
-          <h2 id="pNotesLabel"></h2>
+          <h2 id="pNotesLabel">Notes</h2>
           <div id="pNotes"></div>
         </div>
 
