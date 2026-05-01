@@ -33,24 +33,28 @@ function parseSections(text) {
         html += "</ul>";
         listOpen = false;
       }
-
       html += `<h3>${line.replace("## ","")}</h3>`;
     } else if (line.trim() !== "") {
       if (!listOpen) {
         html += "<ul>";
         listOpen = true;
       }
-
       html += `<li>${line}</li>`;
     }
   });
 
-  if (listOpen) html += "</ul>";
+  if (listOpen) html += "</ul";
   return html;
 }
 
 function update() {
   pTitle.innerText = title.value;
+
+  servingsLabel.innerText = servingsLabelInput.value || "Servings";
+  timeLabel.innerText = timeLabelInput.value || "Time";
+  ingredientsLabel.innerText = ingredientsLabelInput.value || "Ingredients";
+  instructionsLabel.innerText = instructionsLabelInput.value || "Instructions";
+  notesLabel.innerText = notesLabelInput.value || "Notes";
 
   pServings.innerText = servings.value;
   pTime.innerText = time.value;
@@ -80,30 +84,19 @@ function fitCardToPage() {
   });
 }
 
-function editLabel(id) {
-  const label = document.getElementById(id);
-  const currentText = label.innerText;
-  const newText = prompt("Edit field name:", currentText);
-
-  if (newText !== null && newText.trim() !== "") {
-    label.innerText = newText.trim();
-    fitCardToPage();
-  }
-}
-
 function clearAll() {
   document.querySelectorAll("input, textarea").forEach(el => el.value = "");
+
+  servingsLabelInput.value = "Servings";
+  timeLabelInput.value = "Time";
+  ingredientsLabelInput.value = "Ingredients";
+  instructionsLabelInput.value = "Instructions";
+  notesLabelInput.value = "Notes";
 
   fileInput.value = "";
   previewImage.src = "";
   previewImage.style.display = "none";
   placeholder.style.display = "block";
-
-  ingredientsLabel.innerText = "Ingredients";
-  instructionsLabel.innerText = "Instructions";
-  notesLabel.innerText = "Notes";
-  servingsLabel.innerText = "Servings";
-  timeLabel.innerText = "Time";
 
   update();
 }
