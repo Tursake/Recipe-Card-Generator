@@ -6,8 +6,6 @@
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- PDF LIB -->
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
 
@@ -15,18 +13,11 @@
 
 <div class="layout">
 
-  <!-- EDITOR -->
   <div class="editor">
     <h1>Recipe Card Generator</h1>
 
-    <label>Card size</label>
-    <select id="size">
-      <option value="a4">A4</option>
-      <option value="a5">A5</option>
-    </select>
-
     <label>Image</label>
-    <input type="file" id="imageUpload">
+    <input type="file" id="imageUpload" accept="image/*">
 
     <label>Title</label>
     <input id="title">
@@ -35,7 +26,7 @@
       <div>
         <div class="editableLabel">
           <label id="servingsLabel">Servings</label>
-          <button class="editIcon" onclick="editLabel('servingsLabel')">✎</button>
+          <button class="editIcon" onclick="editLabel('servingsLabel')" title="Edit">✎</button>
         </div>
         <input id="servings" placeholder="10">
       </div>
@@ -43,7 +34,7 @@
       <div>
         <div class="editableLabel">
           <label id="timeLabel">Time</label>
-          <button class="editIcon" onclick="editLabel('timeLabel')">✎</button>
+          <button class="editIcon" onclick="editLabel('timeLabel')" title="Edit">✎</button>
         </div>
         <input id="time" placeholder="30 minutes">
       </div>
@@ -51,23 +42,31 @@
 
     <div class="editableLabel">
       <label id="ingredientsLabel">Ingredients</label>
-      <button class="editIcon" onclick="editLabel('ingredientsLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('ingredientsLabel')" title="Edit">✎</button>
     </div>
-    <textarea id="ingredients" placeholder="## Section
-Item 1
-Item 2"></textarea>
+    <textarea id="ingredients" placeholder="## Salad
+Lettuce
+Tomatoes
+
+## Dressing
+Olive oil
+Lemon juice"></textarea>
 
     <div class="editableLabel">
       <label id="instructionsLabel">Instructions</label>
-      <button class="editIcon" onclick="editLabel('instructionsLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('instructionsLabel')" title="Edit">✎</button>
     </div>
-    <textarea id="instructions" placeholder="## Step group
-Step 1
-Step 2"></textarea>
+    <textarea id="instructions" placeholder="## Salad
+Chop the vegetables
+Mix in a bowl
+
+## Dressing
+Whisk together
+Pour over salad"></textarea>
 
     <div class="editableLabel">
       <label id="notesLabel">Notes</label>
-      <button class="editIcon" onclick="editLabel('notesLabel')">✎</button>
+      <button class="editIcon" onclick="editLabel('notesLabel')" title="Edit">✎</button>
     </div>
     <textarea id="notes"></textarea>
 
@@ -76,18 +75,15 @@ Step 2"></textarea>
       <button onclick="window.print()">Print</button>
     </div>
 
-    <!-- PDF MERGE -->
     <div class="pdfMergeBox">
-      <label>Combine PDFs (2 per A4 page)</label>
+      <label>Combine PDFs — 2 per A4 page</label>
       <input type="file" id="pdfFiles" accept="application/pdf" multiple>
       <button onclick="mergePdfsTwoPerPage()">Merge PDFs</button>
     </div>
-
   </div>
 
-  <!-- PREVIEW -->
   <div class="preview">
-    <div id="card" class="card a4">
+    <div id="card" class="card">
 
       <div class="imageWrapper">
         <span id="imagePlaceholder">Add photo</span>
@@ -107,7 +103,6 @@ Step 2"></textarea>
 
         <div class="main">
           <div class="columns">
-
             <div class="ingredientsCol">
               <h2 id="pIngredientsLabel">Ingredients</h2>
               <div id="pIngredients"></div>
@@ -117,7 +112,6 @@ Step 2"></textarea>
               <h2 id="pInstructionsLabel">Instructions</h2>
               <div id="pInstructions"></div>
             </div>
-
           </div>
         </div>
 
@@ -127,13 +121,11 @@ Step 2"></textarea>
         </div>
 
       </div>
-
     </div>
   </div>
 
 </div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
