@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Recipe Card Generator</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Recipe Card Generator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="layout">
 
   <div class="editor">
-    <h1>Recipe Card Generator</h1>
+    <h1>Recipe Card</h1>
 
-    <label>Paper size</label>
+    <label>Card size</label>
     <select id="size">
       <option value="a4">A4</option>
       <option value="a5">A5</option>
     </select>
 
+    <label>Image</label>
+    <input type="file" id="imageUpload">
+
     <label>Title</label>
-    <input id="title" placeholder="Recipe title">
+    <input id="title">
 
-    <label>Servings</label>
-    <input id="servings">
-
-    <label>Time</label>
-    <input id="time">
+    <div class="row">
+      <div>
+        <label>Servings</label>
+        <input id="servings">
+      </div>
+      <div>
+        <label>Time</label>
+        <input id="time">
+      </div>
+    </div>
 
     <label>Ingredients (use ## for sub-headings)</label>
     <textarea id="ingredients"></textarea>
@@ -34,17 +42,30 @@
     <label>Instructions (use ## for sub-headings)</label>
     <textarea id="instructions"></textarea>
 
-    <button onclick="window.print()">Print</button>
+    <label>Notes</label>
+    <textarea id="notes"></textarea>
+
+    <div class="buttons">
+      <button onclick="loadExample()">Load example</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="window.print()">Print</button>
+    </div>
   </div>
 
   <div class="preview">
     <div id="card" class="card a4">
+      <img id="pImage">
       <h1 id="pTitle"></h1>
       <div id="pMeta"></div>
+
       <h2>Ingredients</h2>
       <div id="pIngredients"></div>
+
       <h2>Instructions</h2>
       <div id="pInstructions"></div>
+
+      <h2 id="notesHeader">Notes</h2>
+      <div id="pNotes"></div>
     </div>
   </div>
 
