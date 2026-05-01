@@ -1,14 +1,23 @@
 const inputs = document.querySelectorAll("input, textarea, select");
+const fileInput = document.getElementById("imageUpload");
+const previewImage = document.getElementById("pImage");
+
 inputs.forEach(i => i.addEventListener("input", update));
 
-document.getElementById("imageUpload").onchange = e => {
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("pImage").src = reader.result;
-  };
-  reader.readAsDataURL(e.target.files[0]);
-};
+/* IMAGE UPLOAD */
+fileInput.addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
 
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    previewImage.src = e.target.result;
+    previewImage.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+});
+
+/* PARSE SUB-HEADINGS */
 function parseSections(text) {
   const lines = text.split("\n");
   let html = "";
@@ -28,6 +37,7 @@ function parseSections(text) {
   return html;
 }
 
+/* LIVE UPDATE */
 function update() {
   pTitle.innerText = title.value;
   pMeta.innerText = `${servings.value} servings • ${time.value}`;
@@ -39,19 +49,18 @@ function update() {
   card.className = "card " + size.value;
 }
 
+/* CLEAR EVERYTHING */
 function clearAll() {
-  document.querySelectorAll("input, textarea").forEach(i=>i.value="");
-  document.getElementById("pImage").src="";
-  update();
-}
+  // clear text inputs
+  document.querySelectorAll("input, textarea").forEach(el => el.value = "");
 
-function loadExample() {
-  title.value="Summer Salad";
-  servings.value="2";
-  time.value="15 min";
-  ingredients.value="## Salad\nLettuce\nTomatoes\nCucumber\n\n## Dressing\nOlive oil\nLemon juice";
-  instructions.value="Mix everything.\nServe cold.";
-  notes.value="Best fresh!";
+  // clear file input properly
+  fileInput.value = "";
+
+  // remove preview image
+  previewImage.src = "";
+  previewImage.style.display = "none";
+
   update();
 }
 
