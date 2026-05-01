@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "servingsLabel", "timeLabel", "ingredientsLabel", "instructionsLabel", "notesLabel",
     "pTitle", "pServingsLabel", "pTimeLabel", "pIngredientsLabel", "pInstructionsLabel", "pNotesLabel",
     "pServings", "pTime", "pIngredients", "pInstructions", "pNotes",
-    "pdfFiles"
+    "pdfFiles", "binderMarginToggle"
   ];
 
   const missing = required.filter(id => !$(id));
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageWrapper = $("imageWrapper");
   const placeholder = $("imagePlaceholder");
   const card = $("card");
+  const binderMarginToggle = $("binderMarginToggle");
 
   const titleInput = $("title");
   const servingsInput = $("servings");
@@ -32,7 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("input, textarea").forEach(input => {
     input.addEventListener("input", update);
+    input.addEventListener("change", update);
   });
+
+  binderMarginToggle.addEventListener("change", update);
 
   fileInput.addEventListener("change", function () {
     const file = this.files[0];
@@ -89,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function update() {
+    card.classList.toggle("binderMargin", binderMarginToggle.checked);
+
     $("pTitle").innerText = titleInput.value;
 
     $("pServingsLabel").innerText = $("servingsLabel").innerText;
@@ -146,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     $("ingredientsLabel").innerText = "Ingredients";
     $("instructionsLabel").innerText = "Instructions";
     $("notesLabel").innerText = "Notes";
+
+    binderMarginToggle.checked = false;
 
     fileInput.value = "";
     imageWrapper.style.backgroundImage = "";
