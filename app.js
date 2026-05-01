@@ -1,6 +1,14 @@
 const inputs = document.querySelectorAll("input, textarea, select");
 inputs.forEach(i => i.addEventListener("input", update));
 
+document.getElementById("imageUpload").onchange = e => {
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById("pImage").src = reader.result;
+  };
+  reader.readAsDataURL(e.target.files[0]);
+};
+
 function parseSections(text) {
   const lines = text.split("\n");
   let html = "";
@@ -8,16 +16,10 @@ function parseSections(text) {
 
   lines.forEach(line => {
     if (line.startsWith("## ")) {
-      if (listOpen) {
-        html += "</ul>";
-        listOpen = false;
-      }
-      html += `<h3>${line.replace("## ", "")}</h3>`;
+      if (listOpen) { html += "</ul>"; listOpen=false; }
+      html += `<h3>${line.replace("## ","")}</h3>`;
     } else if (line.trim() !== "") {
-      if (!listOpen) {
-        html += "<ul>";
-        listOpen = true;
-      }
+      if (!listOpen) { html += "<ul>"; listOpen=true; }
       html += `<li>${line}</li>`;
     }
   });
@@ -27,20 +29,30 @@ function parseSections(text) {
 }
 
 function update() {
-  document.getElementById("pTitle").innerText =
-    document.getElementById("title").value;
+  pTitle.innerText = title.value;
+  pMeta.innerText = `${servings.value} servings • ${time.value}`;
 
-  document.getElementById("pMeta").innerText =
-    `${document.getElementById("servings").value} servings • ${document.getElementById("time").value}`;
+  pIngredients.innerHTML = parseSections(ingredients.value);
+  pInstructions.innerHTML = parseSections(instructions.value);
+  pNotes.innerText = notes.value;
 
-  document.getElementById("pIngredients").innerHTML =
-    parseSections(document.getElementById("ingredients").value);
+  card.className = "card " + size.value;
+}
 
-  document.getElementById("pInstructions").innerHTML =
-    parseSections(document.getElementById("instructions").value);
+function clearAll() {
+  document.querySelectorAll("input, textarea").forEach(i=>i.value="");
+  document.getElementById("pImage").src="";
+  update();
+}
 
-  const size = document.getElementById("size").value;
-  document.getElementById("card").className = "card " + size;
+function loadExample() {
+  title.value="Summer Salad";
+  servings.value="2";
+  time.value="15 min";
+  ingredients.value="## Salad\nLettuce\nTomatoes\nCucumber\n\n## Dressing\nOlive oil\nLemon juice";
+  instructions.value="Mix everything.\nServe cold.";
+  notes.value="Best fresh!";
+  update();
 }
 
 update();
