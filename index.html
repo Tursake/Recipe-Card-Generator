@@ -5,8 +5,6 @@
 <title>Recipe Card Generator</title>
 
 <link rel="stylesheet" href="style.css">
-
-<!-- Modern clean font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -14,7 +12,6 @@
 
 <div class="layout">
 
-  <!-- LEFT: EDITOR -->
   <div class="editor">
     <h1>Recipe Card</h1>
 
@@ -56,45 +53,59 @@
     </div>
   </div>
 
-  <!-- RIGHT: PREVIEW -->
   <div class="preview">
     <div id="card" class="card a4">
 
-      <!-- IMAGE -->
       <div class="imageWrapper">
         <span id="imagePlaceholder">Add photo</span>
         <img id="pImage">
       </div>
 
-      <!-- CONTENT -->
       <div class="content">
 
-        <!-- TITLE + META -->
         <h1 id="pTitle"></h1>
-        <div id="pMeta"></div>
+
+        <div class="metaRow">
+          <span>
+            <span id="servingsLabel">Servings</span>: <span id="pServings"></span>
+            <button class="editIcon" onclick="editLabel('servingsLabel')" title="Edit">✎</button>
+          </span>
+
+          <span>
+            <span id="timeLabel">Time</span>: <span id="pTime"></span>
+            <button class="editIcon" onclick="editLabel('timeLabel')" title="Edit">✎</button>
+          </span>
+        </div>
 
         <hr class="divider">
 
-        <!-- MAIN TWO-COLUMN AREA -->
         <div class="main">
           <div class="columns">
 
             <div class="ingredientsCol">
-              <h2>Ingredients</h2>
+              <div class="editableLabel">
+                <h2 id="ingredientsLabel">Ingredients</h2>
+                <button class="editIcon" onclick="editLabel('ingredientsLabel')" title="Edit">✎</button>
+              </div>
               <div id="pIngredients"></div>
             </div>
 
             <div class="instructionsCol">
-              <h2>Instructions</h2>
+              <div class="editableLabel">
+                <h2 id="instructionsLabel">Instructions</h2>
+                <button class="editIcon" onclick="editLabel('instructionsLabel')" title="Edit">✎</button>
+              </div>
               <div id="pInstructions"></div>
             </div>
 
           </div>
         </div>
 
-        <!-- NOTES (BOTTOM SECTION) -->
         <div class="notesSection">
-          <h2>Notes</h2>
+          <div class="editableLabel">
+            <h2 id="notesLabel">Notes</h2>
+            <button class="editIcon" onclick="editLabel('notesLabel')" title="Edit">✎</button>
+          </div>
           <div id="pNotes"></div>
         </div>
 
