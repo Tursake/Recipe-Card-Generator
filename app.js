@@ -51,7 +51,9 @@ function parseSections(text) {
 
 function update() {
   pTitle.innerText = title.value;
-  pMeta.innerText = `Servings: ${servings.value}   Time: ${time.value}`;
+
+  pServings.innerText = servings.value;
+  pTime.innerText = time.value;
 
   pIngredients.innerHTML = parseSections(ingredients.value);
   pInstructions.innerHTML = parseSections(instructions.value);
@@ -78,6 +80,17 @@ function fitCardToPage() {
   });
 }
 
+function editLabel(id) {
+  const label = document.getElementById(id);
+  const currentText = label.innerText;
+  const newText = prompt("Edit field name:", currentText);
+
+  if (newText !== null && newText.trim() !== "") {
+    label.innerText = newText.trim();
+    fitCardToPage();
+  }
+}
+
 function clearAll() {
   document.querySelectorAll("input, textarea").forEach(el => el.value = "");
 
@@ -85,6 +98,12 @@ function clearAll() {
   previewImage.src = "";
   previewImage.style.display = "none";
   placeholder.style.display = "block";
+
+  ingredientsLabel.innerText = "Ingredients";
+  instructionsLabel.innerText = "Instructions";
+  notesLabel.innerText = "Notes";
+  servingsLabel.innerText = "Servings";
+  timeLabel.innerText = "Time";
 
   update();
 }
