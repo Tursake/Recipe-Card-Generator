@@ -59,6 +59,7 @@ textarea {
 .buttons button,
 .pdfMergeBox button {
   margin-right:10px;
+  margin-bottom:8px;
   padding:10px 14px;
   border:none;
   background:#111;
@@ -100,6 +101,19 @@ textarea {
   margin-top:30px;
   padding-top:20px;
   border-top:1px solid #ddd;
+}
+
+.pdfMergeBox h2 {
+  margin:0 0 8px;
+  font-size:16px;
+  font-weight:600;
+}
+
+.pdfMergeBox p {
+  margin:0 0 14px;
+  font-size:13px;
+  color:#666;
+  line-height:1.4;
 }
 
 .preview {
@@ -212,32 +226,6 @@ textarea {
   flex:1;
 }
 
-.printHint {
-  font-size:12px;
-  color:#666;
-  margin-top:10px;
-  line-height:1.4;
-}
-
-.pdfMergeBox {
-  margin-top:30px;
-  padding-top:20px;
-  border-top:1px solid #ddd;
-}
-
-.pdfMergeBox h2 {
-  margin:0 0 8px;
-  font-size:16px;
-  font-weight:600;
-}
-
-.pdfMergeBox p {
-  margin:0 0 14px;
-  font-size:13px;
-  color:#666;
-  line-height:1.4;
-}
-
 ul {
   padding-left:18px;
   margin:5px 0 15px;
@@ -259,7 +247,17 @@ li {
   color:#444;
 }
 
+@page {
+  size:A4 portrait;
+  margin:0;
+}
+
 @media print {
+  html, body {
+    margin:0;
+    padding:0;
+  }
+
   body * {
     visibility:hidden;
   }
