@@ -4,7 +4,10 @@ body {
   color:#222;
 }
 
-.layout { display:flex; height:100vh; }
+.layout {
+  display:flex;
+  height:100vh;
+}
 
 .editor {
   width:380px;
@@ -33,10 +36,18 @@ input, textarea, select {
   box-sizing:border-box;
 }
 
-textarea { height:120px; }
+textarea {
+  height:120px;
+}
 
-.row { display:flex; gap:10px; }
-.row > div { flex:1; }
+.row {
+  display:flex;
+  gap:10px;
+}
+
+.row > div {
+  flex:1;
+}
 
 .buttons button {
   margin-right:10px;
@@ -47,7 +58,6 @@ textarea { height:120px; }
   cursor:pointer;
 }
 
-/* Editable editor labels */
 .editableLabel {
   display:flex;
   align-items:center;
@@ -77,7 +87,6 @@ textarea { height:120px; }
   color:#111;
 }
 
-/* Preview */
 .preview {
   flex:1;
   background:#e6e6e6;
@@ -94,8 +103,15 @@ textarea { height:120px; }
   flex-direction:column;
 }
 
-.a4 { width:794px; height:1123px; }
-.a5 { width:559px; height:794px; }
+.a4 {
+  width:794px;
+  height:1123px;
+}
+
+.a5 {
+  width:559px;
+  height:794px;
+}
 
 .imageWrapper {
   width:100%;
@@ -167,15 +183,22 @@ textarea { height:120px; }
   margin:25px 0;
 }
 
-.main { flex:1; }
+.main {
+  flex:1;
+}
 
 .columns {
   display:flex;
   gap:40px;
 }
 
-.ingredientsCol { flex:0 0 30%; }
-.instructionsCol { flex:1; }
+.ingredientsCol {
+  flex:0 0 30%;
+}
+
+.instructionsCol {
+  flex:1;
+}
 
 ul {
   padding-left:18px;
@@ -199,7 +222,9 @@ li {
 }
 
 @media print {
-  body * { visibility:hidden; }
+  body * {
+    visibility:hidden;
+  }
 
   #card, #card * {
     visibility:visible;
