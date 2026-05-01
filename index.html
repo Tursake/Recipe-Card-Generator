@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Card Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="editor">
+    <h1>Recipe Card Generator</h1>
+
+    <label>Paper size</label>
+    <select id="size">
+      <option value="a4">A4</option>
+      <option value="a5">A5</option>
+    </select>
+
+    <label>Title</label>
+    <input id="title" placeholder="Recipe title">
+
+    <label>Servings</label>
+    <input id="servings">
+
+    <label>Time</label>
+    <input id="time">
+
+    <label>Ingredients (use ## for sub-headings)</label>
+    <textarea id="ingredients"></textarea>
+
+    <label>Instructions (use ## for sub-headings)</label>
+    <textarea id="instructions"></textarea>
+
+    <button onclick="window.print()">Print</button>
+  </div>
+
+  <div class="preview">
+    <div id="card" class="card a4">
+      <h1 id="pTitle"></h1>
+      <div id="pMeta"></div>
+      <h2>Ingredients</h2>
+      <div id="pIngredients"></div>
+      <h2>Instructions</h2>
+      <div id="pInstructions"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
