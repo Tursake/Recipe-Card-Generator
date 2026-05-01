@@ -4,10 +4,7 @@ body {
   color:#222;
 }
 
-.layout {
-  display:flex;
-  height:100vh;
-}
+.layout { display:flex; height:100vh; }
 
 .editor {
   width:380px;
@@ -32,18 +29,10 @@ input, textarea, select {
   box-sizing:border-box;
 }
 
-textarea {
-  height:120px;
-}
+textarea { height:120px; }
 
-.row {
-  display:flex;
-  gap:10px;
-}
-
-.row > div {
-  flex:1;
-}
+.row { display:flex; gap:10px; }
+.row > div { flex:1; }
 
 .buttons button {
   margin-right:10px;
@@ -70,15 +59,8 @@ textarea {
   flex-direction:column;
 }
 
-.a4 {
-  width:794px;
-  height:1123px;
-}
-
-.a5 {
-  width:559px;
-  height:794px;
-}
+.a4 { width:794px; height:1123px; }
+.a5 { width:559px; height:794px; }
 
 .imageWrapper {
   width:100%;
@@ -122,7 +104,7 @@ textarea {
 }
 
 .card h2 {
-  margin:0;
+  margin:0 0 12px;
   font-size:18px;
   font-weight:600;
 }
@@ -144,32 +126,21 @@ textarea {
   gap:24px;
 }
 
-.metaRow span {
-  position:relative;
-}
-
 .divider {
   border:none;
   border-top:1px solid #e5e5e5;
   margin:25px 0;
 }
 
-.main {
-  flex:1;
-}
+.main { flex:1; }
 
 .columns {
   display:flex;
   gap:40px;
 }
 
-.ingredientsCol {
-  flex:0 0 30%;
-}
-
-.instructionsCol {
-  flex:1;
-}
+.ingredientsCol { flex:0 0 30%; }
+.instructionsCol { flex:1; }
 
 ul {
   padding-left:18px;
@@ -192,49 +163,14 @@ li {
   color:#444;
 }
 
-.editableLabel {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:12px;
-}
-
-.editIcon {
-  opacity:0;
-  border:none;
-  background:transparent;
-  cursor:pointer;
-  font-size:14px;
-  color:#777;
-  padding:2px 4px;
-}
-
-.editableLabel:hover .editIcon,
-.metaRow span:hover .editIcon {
-  opacity:1;
-}
-
-.editIcon:hover {
-  color:#111;
-}
-
 @media print {
-  body * {
-    visibility:hidden;
-  }
-
-  #card, #card * {
-    visibility:visible;
-  }
+  body * { visibility:hidden; }
+  #card, #card * { visibility:visible; }
 
   #card {
     position:absolute;
     left:0;
     top:0;
     box-shadow:none;
-  }
-
-  .editIcon {
-    display:none;
   }
 }
